@@ -27,3 +27,17 @@ Route::get('/edit/articles/{id}', [App\Http\Controllers\ArticleController::class
 Route::put('/update/articles/{id}', [App\Http\Controllers\ArticleController::class, 'edit'])->name('articles.update');
 Route::post('/create/articles', [App\Http\Controllers\ArticleController::class,'create'])->name('article.create');
 Route::get('/delete/articles/{id}',[App\Http\Controllers\ArticleController::class,'delete'])->name('article.delete');
+
+//Categories
+//INDEX
+Route::get('/category', [App\Http\Controllers\CategoryController::class, 'index'])->name('categoryIndex');
+//FORM EDITAR
+Route::get('/edit/categories/{id}',[App\Http\Controllers\CategoryController::class, 'editCategory'])->name('categories.edit');
+//ACCION EDITAR
+Route::put('/update/categories/{id}', [App\Http\Controllers\CategoryController::class, 'edit'])->name('categories.update');
+//ACCION ELIMINAR
+Route::get('/delete/categories/{id}', [App\Http\Controllers\CategoryController::class,'delete'])->name('category.delete');
+//CREAR
+Route::get('/create/categories', [App\Http\Controllers\CategoryController::class, 'makeNew'])->name('category');
+//CREAR POST
+Route::post('/create/categories', [App\Http\Controllers\CategoryController::class,'create'])->name('category.create');

@@ -4,6 +4,7 @@
     <a href="/home" class="menu-item is-active">Home</a>
     <a href="/user" class="menu-item">Usuarios</a>
     <a href="/article" class="menu-item">Articulos</a>
+    <a href="/category" class="menu-item">Categoria</a>
     <a href="/config" class="menu-item">Configuraciones</a>
 @endsection
 
