@@ -27,17 +27,19 @@
                         @endforeach
                     @endif
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Titulo</label>
+                        <label for="name">name</label>
                         <input type="title" name="name" class="form-control" placeholder="Ingrese el titulo">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Descripcion</label>
-                        <textarea name="description" cols="30" rows="10"></textarea>
+                        <label for="description">Descripcion</label>
+                        <textarea name="description" id="description" class="form-control"></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Enviar</button>
-                    <a class="btn btn-primary" href="{{ route('categoryIndex') }}" role="button">Cancelar</a>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="submit" class="btn btn-primary me-md-2">Enviar</button>
+                        <a class="btn btn-primary" href="{{ route('categoryIndex') }}" role="button">Cancelar</a>
+                    </div>
 
 
                 </form>

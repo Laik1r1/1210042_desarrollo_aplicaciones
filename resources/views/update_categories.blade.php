@@ -32,7 +32,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="form-group">
-                    <label for="nambe">Nombre</label>
+                    <label for="name">Nombre</label>
                     <input type="text" name="name" id="name" class="form-control"
                         value="{{ isset($category) ? $category->name : '' }}" required>
                 </div>
@@ -44,11 +44,14 @@
             </div>
         </div>
 
-        <button type="submit" id="submit-btn"
-            class="btn btn-primary">{{ isset($category) ? 'Actualizar' : 'Guardar' }}</button>
-        <a class="btn btn-primary" href="{{ isset($category) ? route('category.delete', $category->id) : 'Eliminar' }}"
-            role="button">Borrar</a>
-        <a class="btn btn-primary" href="{{ route('categoryIndex') }}" role="button">Cancelar</a>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="submit" id="submit-btn"
+                class="btn btn-primary">{{ isset($category) ? 'Actualizar' : 'Guardar' }}</button>
+            <a class="btn btn-primary"
+                href="{{ isset($category) ? route('category.delete', $category->id) : 'Eliminar' }}"
+                role="button">Borrar</a>
+            <a class="btn btn-primary" href="{{ route('categoryIndex') }}" role="button">Cancelar</a>
+        </div>
 
     </form>
 </body>
