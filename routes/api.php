@@ -19,5 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/getArticles',[App\Http\Controllers\Api\ArticleApiController::class, 'index'])->middleware('validate');
+Route::get('/getArticles',[App\Http\Controllers\Api\ArticleApiController::class, 'index'])->middleware('validate.api');
 Route::get('/showArticle/{id}',[App\Http\Controllers\Api\ArticleApiController::class, 'show']);

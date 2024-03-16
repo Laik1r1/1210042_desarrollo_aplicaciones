@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[App\Http\Controllers\Controller::class,'landingpage'])->name('landingpage');
+
 
 Auth::routes();
 
@@ -41,3 +41,5 @@ Route::get('/delete/categories/{id}', [App\Http\Controllers\CategoryController::
 Route::get('/create/categories', [App\Http\Controllers\CategoryController::class, 'makeNew'])->name('category');
 //CREAR POST
 Route::post('/create/categories', [App\Http\Controllers\CategoryController::class,'create'])->name('category.create');
+//LANDING VIEW MORE
+Route::get('/article/view/{id}', [App\Http\Controllers\ArticleController::class,'show'])->name('article.show');

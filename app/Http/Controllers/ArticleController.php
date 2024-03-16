@@ -27,17 +27,26 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Articles::all();
-        return view('article',compact('articles'));
+        return view('article', compact('articles'));
     }
 
-    public function makeNew(){
+
+    public function makeNew()
+    {
         return view('create_articles');
     }
 
-    public function editArticle($id){
+    public function editArticle($id)
+    {
         $article = Articles::findOrFail($id);
         $categories = Category::all();
-        return view('update_articles',compact('article','categories'));
+        return view('update_articles', compact('article', 'categories'));
+    }
+
+    public function show($id)
+    {
+        $article = Articles::findOrFail($id);
+        return view('landing.viewmore',compact('article'));
     }
 
     public function create(Request $request)
@@ -48,20 +57,22 @@ class ArticleController extends Controller
         $article->author = $request->author;
         $article->category_id = $request->category_id;
         $article->save();
-        return redirect()->route('article')->with('success','Registro Creado');
+        return redirect()->route('article')->with('success', 'Registro Creado');
     }
 
-    public function edit(Request $request, $id){
+    public function edit(Request $request, $id)
+    {
         $article = Articles::find($id);
         $article->update(
             $request->all()
         );
         return redirect()->route('article')->with('success', 'Se ha actualizado el registro');
     }
-    
-    public function delete($id){
+
+    public function delete($id)
+    {
         $article = Articles::find($id);
         $article->delete();
-        return redirect()->route('article')->with('success','Se ha eliminado el registro');
+        return redirect()->route('article')->with('success', 'Se ha eliminado el registro');
     }
 }
