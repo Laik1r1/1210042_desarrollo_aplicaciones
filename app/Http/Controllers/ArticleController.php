@@ -43,11 +43,6 @@ class ArticleController extends Controller
         return view('update_articles', compact('article', 'categories'));
     }
 
-    public function show($id)
-    {
-        $article = Articles::findOrFail($id);
-        return view('landing.viewmore',compact('article'));
-    }
 
     public function create(Request $request)
     {

@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[App\Http\Controllers\Controller::class,'landingpage'])->name('landingpage');
+Route::get('/article/view/{id}', [App\Http\Controllers\Controller::class,'viewMore'])->name('article.viewMore');
 
 
 Auth::routes();
@@ -41,5 +42,4 @@ Route::get('/delete/categories/{id}', [App\Http\Controllers\CategoryController::
 Route::get('/create/categories', [App\Http\Controllers\CategoryController::class, 'makeNew'])->name('category');
 //CREAR POST
 Route::post('/create/categories', [App\Http\Controllers\CategoryController::class,'create'])->name('category.create');
-//LANDING VIEW MORE
-Route::get('/article/view/{id}', [App\Http\Controllers\ArticleController::class,'show'])->name('article.show');
+

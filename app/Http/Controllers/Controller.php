@@ -20,6 +20,7 @@ class Controller extends BaseController
     public function viewMore($id)
     {
         $article = Articles::findOrFail($id);
-        return view();
+        return view('landing.viewmore',compact('article'));
     }
+
 }

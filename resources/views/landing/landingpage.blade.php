@@ -24,20 +24,41 @@
                 aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
-                <ul class="navbar-nav">
+            <div class="collapse navbar-collapse align-center" id="main-nav">
+                <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('landingpage')}}">Inicio</a>
+                        <a class="nav-link" href="{{ route('landingpage') }}">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('landingpage')}}">Artículos</a>
+                        <a class="nav-link" href="{{ route('landingpage') }}">Artículos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Acerca de</a>
                     </li>
-
                 </ul>
             </div>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    @if (Route::has('login'))
+                        <div class="btn-group">
+                            @auth
+                                <a href="{{ url('/home') }}"
+                                    class="btn btn-primary">Home</a>
+                            @else
+                                <a href="{{ route('login') }}"
+                                    class="btn btn-dark">Log
+                                    in</a>
+
+                                @if (Route::has('register'))
+                                    <a href="{{ route('register') }}"
+                                        class="btn btn-dark">Register</a>
+                                @endif
+                            @endauth
+                        </div>
+                    @endif
+                </li>
+            </ul>
+
         </div>
     </nav>
     <!-- Cards Container -->
@@ -46,11 +67,12 @@
             @foreach ($articles as $article)
                 <!-- Card For Article -->
                 <div class="mt-3 card container" style="width: 18rem;">
-                    <img class="card-img-top" src="{{asset('images/article_land.png')}}" alt="Card image cap">
+                    <img class="card-img-top" src="{{ asset('images/article_land.png') }}" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">{{$article->title}}</h5>
-                        <p class="card-text">{{Str::limit($article->content,100,$end=('...'))}}</p>
-                        <a href="{{route('article.show',['id' => $article->id])}}" class="btn btn-primary">View More</a>
+                        <h5 class="card-title">{{ $article->title }}</h5>
+                        <p class="card-text">{{ Str::limit($article->content, 100, $end = '...') }}</p>
+                        <a href="{{ route('article.viewMore', ['id' => $article->id]) }}" class="btn btn-primary">View
+                            More</a>
                     </div>
                 </div>
             @endforeach
